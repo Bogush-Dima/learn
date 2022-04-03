@@ -1,45 +1,102 @@
-abstract class Car {
-  public model: string = ""
-  getPrice() {}
-}
+//! Bad Example
 
-class Tesla extends Car {
-  public model: string = "Tesla"
+// class Person {
+//   constructor(
+//     public name: string,
+//     public gender: string
+//   ){}
+  
+//   // ! Initial sayName method
+//   // sayName() {
+//   //   console.log(`His name is ${this.name}`);
+//   // }
+  
+//   // ! Here we need to change sayName method for different genders
+//   sayName() {
+//     if (this.gender === "male") {
+//       console.log(`His name is ${this.name}`);
+//     } else if (this.gender === "female") {
+//       console.log(`Her name is ${this.name}`);
+//     }
+//   }
+//  }
+  
+//  class Male extends Person {
+//   constructor(
+//     public name: string,
+//     public gender: string
+//   ){
+//     super(name, gender)
+//   }
+//  }
+  
+//  class Female extends Person {
+//   constructor(
+//     public name: string,
+//     public gender: string
+//   ){
+//     super(name, gender)
+//   }
+//  }
+  
+//  const paul = new Male("Paul", 'male')
+//  const fiona = new Female("Fiona", 'female')
+  
+//  paul.sayName()
+//  fiona.sayName()
 
-  getPrice() {
-    return 80000
-  }
-}
 
-class Honda extends Car {
-  public model: string = "Honda"
 
-  getPrice() {
-    return 60000
-  }
-}
 
-class BMW extends Car {
-  public model: string = "BMW"
 
-  getPrice() {
-    return 70000
-  }
-}
+//! Good Example
 
-const carsList: Array<Car> = [
-  new Tesla(),
-  new Honda(),
-  new BMW()
-]
+// //! Create interface for common method which we need to have different for genders
+// interface DisaplayName {
+//   sayName: () => void
+// }
+// class Person implements DisaplayName {
+//   constructor(
+//     public name: string,
+//     public gender: string
+//   ){}
 
-carsList.forEach(({model, getPrice}) => {
-  console.log(`Price of ${model} equal ${getPrice()}$`);
-})
+//   //! Init the method
+//   sayName() {}
+// }
 
-// Result in console:
-// Price of Tesla equal 80000$
-// Price of Honda equal 60000$
-// Price of BMW equal 70000$
+// class Male extends Person {
+//   constructor(
+//     public name: string,
+//     public gender: string
+//   ){
+//     super(name, gender)
+//   }
+
+//   //! Extend the method for Man
+//   sayName() {
+//     console.log(`His name is ${this.name}`);
+//   }
+// }
+
+// class Female extends Person {
+//   constructor(
+//     public name: string,
+//     public gender: string
+//   ){
+//     super(name, gender)
+//   }
+
+//   //! Extend the method for Women
+//   sayName() {
+//     console.log(`Her name is ${this.name}`);
+//   }
+// }
+
+// const paul = new Male("Paul", 'male')
+// const fiona = new Female("Fiona", 'female')
+
+// paul.sayName()
+// fiona.sayName()
 
 // npx ts-node openClosed.ts
