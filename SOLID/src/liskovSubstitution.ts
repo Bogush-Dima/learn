@@ -1,44 +1,43 @@
-abstract class Human {
-  constructor(
-    public name: string,
-    public gender: string
-  ){}
+// //! The problem
+// class Human {
+//   say = true
+//   move = true
+// }
 
-  getInfo(){
-    console.log("Name: ", this.name);
-    console.log("Gender: ", this.gender);
-  }
+// class Developer extends Human {
+//   writeCode = true
+// }
+
+// class QA extends Developer {
+//   //! Here we need to change writeCode property so class QA cannot use instead Developer
+//   writeCode = false
+// }
+
+// const qa = new QA()
+
+// console.log(qa.writeCode);
+
+
+//! Decision
+class Human {
+  say = true
+  move = true
 }
 
-class Man extends Human {
-  constructor(
-    public name: string,
-    public gender: string
-  ) {
-    super(name, gender)
-  }
+class CanWriteCode extends Human {
+  writeCode = true
 }
 
-class Woman extends Man {
-  constructor(
-    public name: string,
-    public gender: string
-  ) {
-    super(name, gender)
-  }
+class CannotWriteCode extends Human {
+  writeCode = false
 }
 
-class Trance extends Woman {
-  constructor(
-    public name: string,
-    public gender: string
-  ) {
-    super(name, gender)
-  }
-}
+const qa = new CannotWriteCode()
+const developer = new CanWriteCode()
 
-const idiot = new Trance("Pedro", "??????")
+console.log("QA", qa.writeCode);
+console.log("Developer", developer.writeCode);
 
-idiot.getInfo()
+
 
 // npx ts-node liskovSubstitution.ts
