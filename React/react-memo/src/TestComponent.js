@@ -1,16 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 
 export const TestComponentMemo = ({ count }) => {
+  const ref = useRef(null)
   // const [count, setCount] = useState(0)
 
   // const changeCount = () => {
   //   setCount(1)
   // }
-  console.log(count);
+  ref.count = 2
+  console.log(ref);
 
   return (
     <>
-      <p>{count}</p>
+      <p ref={ref}>{count}</p>
       {/* <button onClick={changeCount}>Click</button> */}
     </>
   )
